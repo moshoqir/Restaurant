@@ -1,0 +1,53 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterSocialMediaModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Master Social Media</h1>
+
+<div class="pagetitle">
+    <h1>Create</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterSocialMedia">Master Social Media</a> </li>
+            <li class="breadcrumb-item">Create</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+
+
+<hr />
+ 
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+
+        <!-- Vertical Form -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MasterSocialMediaImageUrl" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterSocialMediaUrl" class="control-label"></label>
+                <input asp-for="MasterSocialMediaUrl" class="form-control" />
+                <span asp-validation-for="MasterSocialMediaUrl" class="text-danger"></span>
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-action="Index" asp-controller="MasterSocialMedia">Cancel</a>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>

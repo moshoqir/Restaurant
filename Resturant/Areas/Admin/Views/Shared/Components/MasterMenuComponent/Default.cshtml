@@ -1,0 +1,25 @@
+﻿@foreach(var item in Model)
+{
+    <li>
+        @* @if(User?.Identity?.IsAuthenticated == true)
+        { *@
+        @if (item.MasterMenuUrl.StartsWith("/Admin/"))
+        {
+            <li>
+            <a href="@($"{@item.MasterMenuUrl}")" class="nav-link collapsed nav-link" data-bs-target="#components-nav">
+                <i class="bi bi-circle "></i><span>@item.MasterMenuName</span>
+            </a>
+            </li>
+          
+        }
+     
+        @* } *@
+        @* else
+        {
+            <a href="@($"{@item.MasterMenuUrl}")" class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse">
+                <i class="bi bi-circle"></i><span>"@($"{@item.MasterMenuName.toUpper()}")</span>
+            </a>
+        } *@
+
+    </li>
+}

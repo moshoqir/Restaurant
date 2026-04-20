@@ -1,0 +1,65 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterSliderModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Master Sliders</h1>
+
+<div class="pagetitle">
+    <h1>Create</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterSlider">Master Slider</a> </li>
+            <li class="breadcrumb-item">Create</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+
+
+<hr />
+
+ 
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+
+        <!-- Vertical Form -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MasterSliderTitle" class="control-label"></label>
+                <input asp-for="MasterSliderTitle" class="form-control" />
+                <span asp-validation-for="MasterSliderTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterSliderBreef" class="control-label"></label>
+                <input asp-for="MasterSliderBreef" class="form-control" />
+                <span asp-validation-for="MasterSliderBreef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterSliderDesc" class="control-label"></label>
+                <input asp-for="MasterSliderDesc" class="form-control" />
+                <span asp-validation-for="MasterSliderDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterSliderImageUrl" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+           
+          
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-action="Index" asp-controller="MasterSlider">Cancel</a>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>

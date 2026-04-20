@@ -1,0 +1,59 @@
+﻿@model Resturant.Models.TransactionBookTable
+
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="book-table ptb-100 bg-img" id="book" style="background-image:url(/assets/img/banner/book-a-table.jpg);">
+    <div class="container">
+        @if (ViewBag.ModelErrors != null)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var item in (IEnumerable<dynamic>)ViewBag.ModelErrors)
+                    {
+                        <li>
+                            <strong>@item.Field</strong>
+                            <ul>
+                                @foreach (var msg in item.Errors)
+                                {
+                                    <li>@msg</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="reserve-form">
+                    <h3 class="reserv-title">Reservation Form</h3>
+                    <form asp-area="Admin" asp-action="Create" asp-controller="TransactionBookTable">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="reserve-form-top">
+                            <input asp-for="TransactionBookTableFullName" class="form-control" placeholder="Full name" />
+                            <input asp-for="TransactionBookTableEmail" class="form-control" placeholder="Email address" />
+
+                            <input asp-for="TransactionBookTableMobileNumber" class="form-control" placeholder="Mobile number" />
+
+                            <div class="date-time">
+                                <input asp-for="TransactionBookTableDate" class="form-control" placeholder="Select date & time" />
+
+                            </div>
+                        </div>
+                        <div class="reserve-submit mt-40">
+                            <button type="submit"> submit </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="book-img">
+                    <img src="~/assets/img/banner/table.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

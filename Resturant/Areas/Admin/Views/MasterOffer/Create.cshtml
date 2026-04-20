@@ -1,0 +1,62 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterOfferModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Master Offers</h1>
+
+<div class="pagetitle">
+    <h1>Create</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterOffer">Master Offer</a> </li>
+            <li class="breadcrumb-item">Create</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+
+
+<hr />
+ 
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        
+        <!-- Vertical Form -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MasterOfferTitle" class="control-label"></label>
+                <input asp-for="MasterOfferTitle" class="form-control" />
+                <span asp-validation-for="MasterOfferTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterOfferBreef" class="control-label"></label>
+                <input asp-for="MasterOfferBreef" class="form-control" />
+                <span asp-validation-for="MasterOfferBreef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterOfferDesc" class="control-label"></label>
+                <input asp-for="MasterOfferDesc" class="form-control" />
+                <span asp-validation-for="MasterOfferDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterOfferImageUrl" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-action="Index" asp-controller="MasterOffer">Cancel</a>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>

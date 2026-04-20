@@ -1,0 +1,9 @@
+[b|B]in
+[o|O]bj
+.vs/
+.vscode/
+*.user
+*.suo
+*.log
+Dockerfile
+docker-compose.yml

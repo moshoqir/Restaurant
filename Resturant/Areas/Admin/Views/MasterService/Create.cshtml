@@ -1,0 +1,75 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterServiceModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="pagetitle">
+    <h1>Create</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterService">Master Service</a> </li>
+            <li class="breadcrumb-item">Create</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+
+
+<hr />
+ 
+ 
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        @if (ViewBag.ModelErrors != null)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var item in (IEnumerable<dynamic>)ViewBag.ModelErrors)
+                    {
+                        <li>
+                            <strong>@item.Field</strong>
+                            <ul>
+                                @foreach (var msg in item.Errors)
+                                {
+                                    <li>@msg</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <!-- Vertical Form -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MasterServiceTitle" class="control-label"></label>
+                <input asp-for="MasterServiceTitle" class="form-control" />
+                <span asp-validation-for="MasterServiceTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterServiceDesc" class="control-label"></label>
+                <input asp-for="MasterServiceDesc" class="form-control" />
+                <span asp-validation-for="MasterServiceDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterServiceImage" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-action="Index" asp-controller="MasterService">Cancel</a>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>

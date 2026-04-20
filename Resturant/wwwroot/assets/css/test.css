@@ -1,0 +1,25 @@
+﻿/* Inner pages header should be normal (not overlay) */
+.header-area.header-inner {
+   
+    /*    background: #fff !important;*/
+}
+
+    /* Make menu + search dark in inner pages */
+    .header-area.header-inner .main-menu ul li a,
+    .header-area.header-inner .search-wrap > button {
+        color: #242424 !important;
+    }
+
+    /* Hover */
+    .header-area.header-inner .main-menu ul li:hover > a,
+    .header-area.header-inner .search-wrap:hover > button {
+        color: #e54c2a !important;
+    }
+.logo a,
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 !important;
+    margin: -5px !important;
+}

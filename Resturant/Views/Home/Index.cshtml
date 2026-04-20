@@ -1,0 +1,267 @@
+﻿@model Resturant.ViewModel.DataModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="slider-area">
+    <div class="slider-active owl-dot-style owl-carousel">
+        @foreach (var item in Model.ListMasterSlider)
+        {
+            <div class="single-slider bg-img height-100vh d-flex align-items-center justify-content-center" style="background-image:url(/images/sliders/@item.MasterSliderImageUrl);">
+                <div class="slider-content pt-100">
+                    <div class="slider-content-wrap slider-animated-1">
+                        <h2 class="animated">@Html.Raw(item.MasterSliderTitle)</h2>
+                        <h1 class="animated">@Html.Raw(item.MasterSliderBreef)</h1>
+                        <p>@Html.Raw(item.MasterSliderDesc)</p>
+                        <div class="slider-btn mt-20">
+                            <a class="animated" asp-action="Index" asp-controller="MasterItemMenu">read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        @* <div class="single-slider bg-img height-100vh d-flex align-items-center justify-content-center" style="background-image:url(/assets/img/slider/slider-1.jpg);">
+            <div class="slider-content pt-100">
+                <div class="slider-content-wrap slider-animated-1">
+                    <h2 class="animated">Welcome to <span>Basmoti</span> Restaurant</h2>
+                    <h1 class="animated"><span>Hot & spicy</span> food for you</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis,eu condimentum. lorem ipsum dolor. lorem ipsum dolor sit amt.</p>
+                    <div class="slider-btn mt-20">
+                        <a class="animated" href="product-details.html">read more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="single-slider bg-img height-100vh d-flex align-items-center justify-content-center" style="background-image:url(/assets/img/slider/slider-2.jpg);">
+            <div class="slider-content pt-100">
+                <div class="slider-content-wrap slider-animated-1">
+                    <h2 class="animated">Welcome to <span>Basmoti</span> Restaurant</h2>
+                    <h1 class="animated"><span>Basmoti</span> knows your taste</h1>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque felis,eu condimentum. lorem ipsum dolor. lorem ipsum dolor sit amt.</p>
+                    <div class="slider-btn mt-20">
+                        <a class="animated" href="product-details.html">read more</a>
+                    </div>
+                </div>
+            </div>
+        </div> *@
+    </div>
+</div>
+<div class="about-area ptb-95">
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-lg-6">
+                <div class="about-content pr-30">
+                    <h2>@Model.SystemSetting.SystemSettingWelcomeNoteTitle </h2>
+                    <h3> @Model.SystemSetting.SystemSettingWelcomeNoteBreef  </h3>
+                    <div class="about-peragraph">
+                        <p>@Model.SystemSetting.SystemSettingWelcomeNoteDesc</p>
+                        
+                        <div class="default-btn-style mt-35">
+                            <a href=@Model.SystemSetting.SystemSettingWelcomeNoteUrl>read more</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="about-img">
+                    <img alt="" src="~/images/systemsetting/@Model.SystemSetting.SystemSettingWelcomeNoteImageUrl">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="popular-product gray-bg pt-100 pb-100">
+    <div class="container">
+        <div class="section-title text-center mb-50">
+            <h2>Our Popular Dishes</h2>
+            <p> @Model.SystemSetting.SystemSettingItemMenuDesc</p>
+        </div>
+
+        <div class="product-slider-active owl-carousel" >
+            @foreach (var item in Model.ListMasterItemMenu)
+            {
+                <div class="product-style-wrap" style="min-height: 480px; max-height: 450px; display: flex; flex-direction: column;">
+                    <img class="img-fluid" alt="@item.MasterItemMenuTitle"
+                         src="~/images/items/@item.MasterItemMenuImageUrl"
+                         style="height: 290px; object-fit: cover;">
+                    <div class="product-content text-center flex-grow-1 d-flex flex-column">
+                        <h4 class="mt-2">@item.MasterItemMenuTitle</h4>
+                        <p class="flex-grow-1 mb-2">@item.MasterItemMenuDesc</p>
+                        <span class="mt-auto">@item.MasterItemMenuPrice $</span>
+                    </div>
+                </div>
+            }
+           
+        </div>
+    </div>
+    <div class="popular-bg-img">
+        <img alt="" src="assets/img/banner/popular.png">
+    </div>
+</div>
+
+
+
+<div  class="book-table ptb-100 bg-img" id="book" style="background-image:url(/assets/img/banner/book-a-table.jpg);">
+    <div class="container">
+        <div class="section-title text-center mb-50">
+            <h2>book a table</h2>
+            <p> @Model.SystemSetting.TransactionBookTableDesc</p>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="reserve-form">
+                    @using System.Text.Json
+                    @using System.Collections.Generic
+
+                    @if (TempData["BookingSuccess"] != null)
+                    {
+                        <div class="alert alert-success">
+                            @TempData["BookingSuccess"]
+                        </div>
+                    }
+
+                    @if (TempData["BookingErrors"] != null)
+                    {
+                        var dict = JsonSerializer.Deserialize<Dictionary<string, List<string>>>((string)TempData["BookingErrors"]);
+
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach (var kv in dict)
+                                {
+                                    <li>
+                                        <strong>@kv.Key</strong>
+                                        <ul>
+                                            @foreach (var msg in kv.Value)
+                                            {
+                                                <li>@msg</li>
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+
+
+                    <h3 class="reserv-title">Reservation Form</h3>
+                    <form asp-area="Admin" asp-action="Create" asp-controller="TransactionBookTable" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="reserve-form-top">
+                            <input asp-for="@Model.TransactionBookTable.TransactionBookTableFullName" class="form-control" placeholder="Full name" />
+                            <input asp-for="@Model.TransactionBookTable.TransactionBookTableEmail" class="form-control" placeholder="Email address" />
+
+                            <input asp-for="@Model.TransactionBookTable.TransactionBookTableMobileNumber" type="number" class="form-control" placeholder="Mobile number" />
+
+                            <div class="date-time">
+                                <input asp-for="@Model.TransactionBookTable.TransactionBookTableDate" type="datetime-local" class="form-control" />
+                                <span asp-validation-for="@Model.TransactionBookTable.TransactionBookTableDate" class="text-danger"></span>
+
+
+                            </div>
+                        </div>
+                        <div class="reserve-submit mt-40">
+                            <button type="submit"> submit </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="book-img">
+                    <img src="~/assets/img/banner/table.png" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="testimonial-area ptb-100 gray-bg">
+    <div class="container">
+        <div class="section-title text-center mb-50">
+            <h2>what people say</h2>
+            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim nostrud exercitation ullamco laboris nisi.</p>
+        </div>
+
+        <div class="row">
+                 <div class="col-md-12">
+                  
+                    <div class="testimonial-image-slider text-center">
+                    @foreach (var item in Model.ListMasterFeedback)
+                    {
+                        <div class="single-testi-text">
+                            <p>@item.MasterFeedbackComment</p>
+                        </div>
+                    }
+                    </div>
+               
+               
+              
+                    <div class="testimonial-text-slider text-center">
+                    @foreach (var item in Model.ListMasterFeedback)
+                    {
+                        <div class="single-testi-img">
+                            <img src="~/images/feedback/@item.Image" alt="testi 1" style="width:100px" />
+                            <h3>@item.MasterFeedbackFullName</h3>
+                            <h5>@item.MasterFeedbackType</h5>
+                        </div>
+                    }
+                    </div>
+                
+                
+                </div>
+            </div>
+        </div>
+     
+    </div>
+ 
+
+<div class="offer-area gray-bg ptb-100 bg-img" style="background-image:url(/assets/img/banner/offer.jpg);">
+    <div class="container">
+        <div class="row">
+            <div class="xl-auto col-xl-5 ms-auto col-lg-6 col-md-12">
+                <div class="offer-content">
+                    <h5>@Model.MasterOffer.MasterOfferTitle</h5>
+                    <h2>@Model.MasterOffer.MasterOfferBreef</h2>
+                    <p>@Model.MasterOffer.MasterOfferDesc </p>
+                    <div class="default-btn-style book-btn mt-35">
+                        <a class="scroll-up" href="#book">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="brand-logo-area ptb-100">
+    <div class="container">
+       
+        <div class="brand-logo-active owl-carousel">
+
+            @foreach (var item in Model.ListMasterPartner)
+            {
+            
+            <div class="single-brand-logo">
+                    <img class="rounded-circle" alt="@item.MasterPartnerName" src="~/images/partners/@item.MasterPartnerLogoImageUrl" title="@item.MasterPartnerName">
+            </div>
+            }
+            @* <div class="single-brand-logo">
+                <img alt="" src="~/assets/img/brand-logo/2.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="~/assets/img/brand-logo/3.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="~/assets/img/brand-logo/4.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="~/assets/img/brand-logo/5.png">
+            </div>
+            <div class="single-brand-logo">
+                <img alt="" src="~/assets/img/brand-logo/2.png">
+            </div> *@
+        </div>
+       
+    </div>
+</div>
+

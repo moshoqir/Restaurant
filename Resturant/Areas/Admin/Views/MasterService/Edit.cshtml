@@ -1,0 +1,65 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterServiceModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>
+    Menu Services
+</h1>
+
+<div class="pagetitle">
+    <h1>Edit</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MenuService">Menu Service</a> </li>
+            <li class="breadcrumb-item">Edit</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+
+<hr />
+ 
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+
+        <!-- Vertical Form -->
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MasterServiceId" />
+            <input type="hidden" asp-for="IsActive" />
+            <div class="form-group">
+                <label asp-for="MasterServiceTitle" class="control-label"></label>
+                <input asp-for="MasterServiceTitle" class="form-control" />
+                <span asp-validation-for="MasterServiceTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterServiceDesc" class="control-label"></label>
+                <input asp-for="MasterServiceDesc" class="form-control" />
+                <span asp-validation-for="MasterServiceDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterServiceImage" class="control-label"></label>
+                <br />
+                <img src="~/images/services/@Html.DisplayFor(model => model.MasterServiceImage)" class="rounded-circle" style="max-width:50px" />
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+                <input asp-for="MasterServiceImage" type="hidden" />
+            </div>
+           
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-action="Index" asp-controller="MasterService">Cancel</a>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>
+

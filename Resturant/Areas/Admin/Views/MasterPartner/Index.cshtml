@@ -1,0 +1,191 @@
+﻿@model IEnumerable<Resturant.Models.MasterPartner>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Master Partners</h1>
+
+
+
+<main class="main">
+
+    <div class="pagetitle d-flex justify-content-between">
+
+        <div>
+            <h1>Index</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li class="breadcrumb-item">Master Partner</li>
+
+
+                </ol>
+
+            </nav>
+        </div>
+
+
+
+        <p>
+            <a class="btn btn-primary" asp-action="Create">
+                <i class=" ri-add-circle-fill me-1 align-middle"></i>
+                <span class="me-1 align-middle"> Create New</span>
+            </a>
+        </p>
+
+
+
+
+
+
+    </div><!-- End Page Title -->
+
+
+    <section class="section">
+        <div class="row">
+            <div class="col-lg-12">
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> </h5>
+
+
+                        <!-- Table with stripped rows -->
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MasterPartnerId )
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MasterPartnerName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MasterPartnerLogoImageUrl)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MasterPartnerWebsiteUrl)
+                                    </th>
+
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MasterPartnerId )
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MasterPartnerName)
+                                        </td>
+                                       
+                                        <td>
+                                            <img src="~/images/partners/@item.MasterPartnerLogoImageUrl" class="rounded-circle" style="max-width:50px" />
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MasterPartnerWebsiteUrl)
+                                        </td>
+
+                                        <td>
+
+                                            <a asp-action="Edit" asp-route-id="@item.MasterPartnerId ">
+                                                <span class="d-inline-flex align-items-center gap-1">
+
+                                                    <i class="bi bi-pencil-square"></i>
+                                                    <span class="text-black">Edit</span>
+                                                </span>
+                                            </a>
+                                            &nbsp;
+                                            <a class="csDelete" href="#" data-paths="@Url.ActionLink("Delete", "MasterPartner", new { id = item.MasterPartnerId })" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                                <span class="d-inline-flex align-items-center gap-1">
+                                                    <i class="bi bi-trash-fill text-danger"></i>
+                                                    <span class="text-black">Delete</span>
+
+                                                </span>
+
+                                            </a>
+                                            &nbsp;
+                                            <a href="@Url.ActionLink("Active", "MasterPartner", new { id = item.MasterPartnerId })">
+                                                @if (item.IsActive)
+                                                {
+
+
+                                                    <span class="d-inline-flex align-items-center gap-1">
+                                                        <i class="bi bi-toggle-on text-success fs-4"></i>
+                                                        <span class="text-black">Active</span>
+                                                    </span>
+
+
+
+
+
+
+                                                }
+
+                                                else
+                                                {
+                                                    <span class="d-inline-flex align-items-center gap-1">
+                                                        <i class="bi bi-toggle-off text-danger fs-4"></i>
+                                                        <span class="text-black">Not Active</span>
+
+                                                    </span>
+
+
+                                                }
+
+
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                        <!-- End Table with stripped rows -->
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Delete</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure to delete?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger  tt" onclick="ConfirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var dataPath = ""
+    $(document).ready(function(){
+        $(".csDelete").click(function(){
+            alert(dataPath)
+            dataPath = $(this).data("paths")
+        })
+    })
+
+    function ConfirmDelete(){
+        window.location = dataPath
+        dataPath=""
+    }
+</script>

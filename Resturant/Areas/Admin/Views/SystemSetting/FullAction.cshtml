@@ -1,0 +1,149 @@
+﻿@model Resturant.Areas.Admin.ViewModels.SystemSettingModel
+
+@{
+    ViewData["Title"] = "FullAction";
+}
+
+<h1>System Settings</h1>
+
+ 
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"> </h5>
+
+        @if (ViewBag.ModelErrors != null)
+        {
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach (var item in (IEnumerable<dynamic>)ViewBag.ModelErrors)
+                    {
+                        <li>
+                            <strong>@item.Field</strong>
+                            <ul>
+                                @foreach (var msg in item.Errors)
+                                {
+                                    <li>@msg</li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
+
+
+
+        <!-- Multi Columns Form -->
+        <form asp-action="FullAction" class="row g-3" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input readonly  type="hidden" asp-for="SystemSettingId" />
+            <input  type="hidden" asp-for="SystemSettingId" />
+            <div class="form-group col-md-6">
+                <label asp-for="SystemSettingLogoImageUrl" class="control-label"></label>
+                <br />
+                <img src="~/images/systemsetting/@Html.DisplayFor(model => model.SystemSettingLogoImageUrl)" class="rounded-circle" style="max-width:50px" />
+                <input asp-for="LogoImageUrl" class="form-control" />
+                <span asp-validation-for="LogoImageUrl" class="text-danger"></span>
+                <input asp-for="SystemSettingLogoImageUrl" type="hidden" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="SystemSettingLogoImageUrl2" class="control-label"></label>
+                <br />
+                <img src="~/images/systemsetting/@Html.DisplayFor(model => model.SystemSettingLogoImageUrl2)" class="rounded-circle" style="max-width:50px" />
+                <input asp-for="LogoImageUrl2" class="form-control" />
+                <span asp-validation-for="LogoImageUrl2" class="text-danger"></span>
+                <input asp-for="SystemSettingLogoImageUrl2" type="hidden" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="SystemSettingPhone" class="control-label"></label>
+                <input asp-for="SystemSettingPhone" class="form-control" />
+                <span asp-validation-for="SystemSettingPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="SystemSettingEmail" class="control-label"></label>
+                <input asp-for="SystemSettingEmail" class="form-control" />
+                <span asp-validation-for="SystemSettingEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingCopyright" class="control-label"></label>
+                <input asp-for="SystemSettingCopyright" class="form-control" />
+                <span asp-validation-for="SystemSettingCopyright" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteTitle" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteTitle" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteBreef" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteBreef" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteBreef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteDesc" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteDesc" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="SystemSettingWelcomeNoteUrl" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteUrl" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="SystemSettingWelcomeNoteImageUrl" class="control-label"></label>
+                <br />
+                <img src="~/images/systemsetting/@Html.DisplayFor(model => model.SystemSettingWelcomeNoteImageUrl)" class="rounded-circle" style="max-width:50px" />
+                <input asp-for="WelcomeNoteImageUrl" class="form-control" />
+                <span asp-validation-for="WelcomeNoteImageUrl" class="text-danger"></span>
+                <input asp-for="SystemSettingWelcomeNoteImageUrl" type="hidden" />
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="SystemSettingLocationDetails" class="control-label"></label>
+                <input asp-for="SystemSettingLocationDetails" class="form-control" />
+                <span asp-validation-for="SystemSettingLocationDetails" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="SystemSettingMapLocation" class="control-label"></label>
+                <input asp-for="SystemSettingMapLocation" class="form-control" />
+                <span asp-validation-for="SystemSettingMapLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="MapInfo" class="control-label"></label>
+                <input asp-for="MapInfo" class="form-control" />
+                <span asp-validation-for="MapInfo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingFeedbackDesc" class="control-label"></label>
+                <input asp-for="SystemSettingFeedbackDesc" class="form-control" />
+                <span asp-validation-for="SystemSettingFeedbackDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingItemMenuDesc" class="control-label"></label>
+                <input asp-for="SystemSettingItemMenuDesc" class="form-control" />
+                <span asp-validation-for="SystemSettingItemMenuDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingServiceDesc" class="control-label"></label>
+                <input asp-for="SystemSettingServiceDesc" class="form-control" />
+                <span asp-validation-for="SystemSettingServiceDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactionBookTableDesc" class="control-label"></label>
+                <input asp-for="TransactionBookTableDesc" class="form-control" />
+                <span asp-validation-for="TransactionBookTableDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" asp-controller="Home" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+        <!-- End Multi Columns Form -->
+
+    </div>
+</div>

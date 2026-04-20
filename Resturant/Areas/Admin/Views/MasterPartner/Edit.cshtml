@@ -1,0 +1,62 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterPartnerModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>
+   Master Partners
+</h1>
+
+<div class="pagetitle">
+    <h1>Edit</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterPartner">Master Partner</a> </li>
+            <li class="breadcrumb-item">Edit</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+ 
+
+ 
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+
+        <!-- Vertical Form -->
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MasterPartnerId" />
+            <input asp-for="IsActive" type="hidden" />
+            <div class="form-group">
+                <label asp-for="MasterPartnerName" class="control-label"></label>
+                <input asp-for="MasterPartnerName" class="form-control" />
+                <span asp-validation-for="MasterPartnerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterPartnerLogoImageUrl" class="control-label"></label>
+                <br />
+                <img src="~/images/partners/@Html.DisplayFor(model => model.MasterPartnerLogoImageUrl)" class="rounded-circle" style="max-width:50px" />
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+                <input asp-for="MasterPartnerLogoImageUrl" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterPartnerWebsiteUrl" class="control-label"></label>
+                <input asp-for="MasterPartnerWebsiteUrl" class="form-control" />
+                <span asp-validation-for="MasterPartnerWebsiteUrl" class="text-danger"></span>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-action="Index" asp-controller="MasterPartner">Cancel</a>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>

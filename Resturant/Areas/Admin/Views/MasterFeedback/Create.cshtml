@@ -1,0 +1,63 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterFeedbackModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Feedback</h1>
+
+<div class="pagetitle">
+    <h1>Create</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterFeedback">Feedback</a> </li>
+            <li class="breadcrumb-item">Create</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+<hr />
+ 
+
+ 
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+
+        <!-- Vertical Form -->
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           
+            <div class="form-group">
+                <label asp-for="MasterFeedbackFullName" class="control-label"></label>
+                <input asp-for="MasterFeedbackFullName" class="form-control" />
+                <span asp-validation-for="MasterFeedbackFullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterFeedbackType" class="control-label"></label>
+                <input asp-for="MasterFeedbackType" class="form-control" />
+                <span asp-validation-for="MasterFeedbackType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterFeedbackComment" class="control-label"></label>
+                <input asp-for="MasterFeedbackComment" class="form-control" />
+                <span asp-validation-for="MasterFeedbackComment" class="text-danger"></span>
+            </div>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button class="btn btn-secondary" asp-action="Index" asp-controller="MasterMenu">Cancel</button>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>

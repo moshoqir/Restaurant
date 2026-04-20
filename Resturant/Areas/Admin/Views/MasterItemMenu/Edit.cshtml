@@ -1,0 +1,87 @@
+﻿@model Resturant.Areas.Admin.ViewModels.MasterItemMenuModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>
+    Menu Items
+</h1>
+
+<div class="pagetitle">
+    <h1>Edit</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Home">Home</a></li>
+            <li class="breadcrumb-item"><a asp-action="Index" asp-controller="MasterItemMenu">Item</a> </li>
+            <li class="breadcrumb-item">Edit</li>
+
+
+        </ol>
+
+    </nav>
+</div>
+
+<hr />
+
+
+
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+
+        <!-- Vertical Form -->
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MasterItemMenuId" />
+            <input type="hidden" asp-for="IsActive" />
+            <div class="form-group">
+                <label asp-for="MasterItemMenuTitle" class="control-label"></label>
+                <input asp-for="MasterItemMenuTitle" class="form-control" />
+                <span asp-validation-for="MasterItemMenuTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterCategoryMenuId" class="control-label"></label>
+                <select asp-for="MasterCategoryMenuId" class="form-control"
+                        asp-items=@(new SelectList(ViewBag.categoryList, "MasterCategoryMenuId", "MasterCategoryMenuName"))></select>
+                <span asp-validation-for="MasterCategoryMenuId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterItemMenuBreef" class="control-label"></label>
+                <input asp-for="MasterItemMenuBreef" class="form-control" />
+                <span asp-validation-for="MasterItemMenuBreef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterItemMenuDesc" class="control-label"></label>
+                <input asp-for="MasterItemMenuDesc" class="form-control" />
+                <span asp-validation-for="MasterItemMenuDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterItemMenuPrice" class="control-label"></label>
+                <input asp-for="MasterItemMenuPrice" class="form-control" />
+                <span asp-validation-for="MasterItemMenuPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterItemMenuImageUrl" class="control-label"></label>
+                <br />
+                <img src="~/images/items/@Html.DisplayFor(model => model.MasterItemMenuImageUrl)" class="rounded-circle" style="max-width:50px" />
+                <input asp-for="File" class="form-control" />
+                <input asp-for="MasterItemMenuImageUrl"  type="hidden" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterItemMenuDate" class="control-label"></label>
+                <input asp-for="MasterItemMenuDate" class="form-control" />
+                <span asp-validation-for="MasterItemMenuDate" class="text-danger"></span>
+            </div>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <a class="btn btn-secondary" asp-action="Index" asp-controller="MasterItemMenu">Cancel</a>
+            </div>
+        </form>
+        <!-- Vertical Form -->
+
+    </div>
+</div>
