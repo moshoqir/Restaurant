@@ -31,7 +31,7 @@ namespace Resturant.Controllers
         }
 
    
-
+        // comment to test ci/cd
         public IActionResult Index()
         {
             var data = new DataModel

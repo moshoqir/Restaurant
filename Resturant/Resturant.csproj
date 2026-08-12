@@ -33,4 +33,8 @@
     <Folder Include="wwwroot\images\offers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include=".github\workflows\production.yml" />
+  </ItemGroup>
+
 </Project>
